@@ -22,7 +22,7 @@ namespace Xamarin.Android.Tools {
 			bool docsType   = false;
 			int  verbosity  = 0;
 			bool autorename = false;
-			var outputFile = @"D:\dnmd.xml";//(string) null;
+			var outputFile = (string) null;
 			string platform = null;
 			var  docsPaths  = new List<string> ();
 			var p = new OptionSet () {
