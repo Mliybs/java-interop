@@ -1,4 +1,4 @@
-﻿<Project>
+<Project>
 
   <PropertyGroup>
     <GeneratorPath>$(UtilityOutputFullPath)generator.dll</GeneratorPath>
@@ -7,6 +7,7 @@
     <GenAPIInputAssembly>$(TargetPath)</GenAPIInputAssembly>
     <GenAPILibPath>$(OutputPath)</GenAPILibPath>
     <GenAPITargetPath>..\Java.Base-ref.cs</GenAPITargetPath>
+    <JavaSdkDirectory>C:\Program Files\Microsoft\jdk-17.0.15.6-hotspot</JavaSdkDirectory>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,7 +16,7 @@
 
   <Target Name="_GetJavaBaseJmodPath">
     <PropertyGroup Condition=" '$(JavaSdkDirectory)' != '' ">
-      <_JavaBaseJmod>$(JavaSdkDirectory)/jmods/java.base.jmod</_JavaBaseJmod>
+      <_JavaBaseJmod>$(JavaSdkDirectory)\jmods\java.base.jmod</_JavaBaseJmod>
     </PropertyGroup>
   </Target>
 
@@ -72,6 +73,62 @@
     />
     <ItemGroup>
       <Compile Include="$(_FullIntermediateOutputPath)\mcw\**\*.cs" KeepDuplicates="False" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Lang.Constants.IClassDesc.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Lang.Constants.IMethodTypeDesc.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Lang.Invoke.MethodType.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Buffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.ByteBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.CharBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.DoubleBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.FloatBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.IntBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.LongBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.MappedByteBuffer.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.ShortBuffer.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Channels.AsynchronousServerSocketChannel.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Channels.AsynchronousSocketChannel.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Channels.DatagramChannel.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Channels.FileChannel.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Channels.ServerSocketChannel.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Nio.Channels.SocketChannel.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.*ResourceBundle.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.IEventListener.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.PriorityQueue.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.Scanner.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.IPrimitiveIterator.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.Concurrent.PriorityBlockingQueue.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Util.Concurrent.ConcurrentHashMap.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.MinguoChronology.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.MinguoDate.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.ThaiBuddhistChronology.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.ThaiBuddhistDate.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.JapaneseChronology.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.JapaneseDate.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.IChronoLocalDateTime.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.IChronoLocalDate.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.IChronoZonedDateTime.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.HijrahChronology.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Time.Chrono.HijrahDate.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Text.Format.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Text.DateFormat.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Text.MessageFormat.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Net.JarURLConnection.cs" />
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Java.Net.URLClassLoader.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Jdk.*.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Com.*.cs" />
+
+      <Compile Remove="$(_FullIntermediateOutputPath)\mcw\**\Sun.*.cs" />
     </ItemGroup>
     <XmlPeek
         Namespaces="&lt;Namespace Prefix='msbuild' Uri='http://schemas.microsoft.com/developer/msbuild/2003' /&gt;"

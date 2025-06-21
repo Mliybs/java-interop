@@ -161,7 +161,7 @@ namespace Java.Interop
 		internal    bool                                TrackIDs            {get; private set;}
 		internal    bool                                JniAddNativeMethodRegistrationAttributePresent { get; }
 
-		protected JniRuntime (CreationOptions options)
+		public JniRuntime (CreationOptions options)
 		{
 			if (options == null)
 				throw new ArgumentNullException (nameof (options));

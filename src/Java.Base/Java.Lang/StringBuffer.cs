@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Java.Lang {
 	partial class StringBuffer : IEnumerable, IEnumerable<char> {
-
+// package-private AbstractStringBuffer
 #if JAVA_API_21
 		IAppendable? IAppendable.Append (char c) =>
 			Append (c);

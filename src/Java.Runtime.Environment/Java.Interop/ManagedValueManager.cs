@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Java.Interop {
 
-	class ManagedValueManager : JniRuntime.JniValueManager {
+	public class ManagedValueManager : JniRuntime.JniValueManager {
 
 		Dictionary<int, List<IJavaPeerable>>?   RegisteredInstances = new Dictionary<int, List<IJavaPeerable>>();
 

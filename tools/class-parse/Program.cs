@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Xamarin.Android.Tools {
 			bool docsType   = false;
 			int  verbosity  = 0;
 			bool autorename = false;
-			var  outputFile = (string) null;
+			var outputFile = @"D:\dnmd.xml";//(string) null;
 			string platform = null;
 			var  docsPaths  = new List<string> ();
 			var p = new OptionSet () {

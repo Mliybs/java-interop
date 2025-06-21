@@ -1,17 +1,58 @@
 <metadata>
   <!-- For now, just bind a few packages  -->
-  <remove-node path="//api/package[
+  <!--<remove-node path="//api/package[
       not(
         starts-with(@name, 'java.lang')
         or starts-with(@name, 'java.io')
-        or starts-with(@name, 'java.util.concurrent')
-        or starts-with(@name, 'java.util.function')
-      )]" />
+        or starts-with(@name, 'java.util')
+      )]" />-->
+  <!--<remove-node path="//api/package[
+               starts-with(@name, 'java.util.concurrent')
+               or starts-with(@name, 'java.util.jar')
+               or starts-with(@name, 'java.util.zip')
+               or starts-with(@name, 'java.time')
+               or starts-with(@name, 'java.security')
+               or starts-with(@name, 'javax')
+               or starts-with(@name, 'jdk')
+               or starts-with(@name, 'com')
+               or starts-with(@name, 'sun')
+               ]"/>-->
+    <!--那我缺的这个ends-with这一块谁给我补啊-->
+  <!--<remove-node path="//api/package[@name='java.util']/class[substring(@name, string-length(@name) - string-length('ResourceBundle') + 1 = 'ResourceBundle')]"/>
+  <remove-node path="//api/package[@name='java.text']/class[substring(@name, string-length(@name) - string-length('Format') + 1 = 'Format')]"/>
+  <remove-node path="//api/package[@name='java.util']/class[@name='AbstractQueue']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='Buffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='ByteBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='CharBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='DoubleBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='FloatBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='IntBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='LongBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='MappedByteBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio']/class[@name='ShortBuffer']"/>
+  <remove-node path="//api/package[@name='java.nio.channels']/class[@name='AsynchronousServerSocketChannel']"/>
+  <remove-node path="//api/package[@name='java.nio.channels']/class[@name='AsynchronousSocketChannel']"/>
+  <remove-node path="//api/package[@name='java.nio.channels']/class[@name='DatagramChannel']"/>
+  <remove-node path="//api/package[@name='java.nio.channels']/class[@name='FileChannel']"/>
+  <remove-node path="//api/package[@name='java.nio.channels']/class[@name='ServerSocketChannel']"/>
+  <remove-node path="//api/package[@name='java.nio.channels']/class[@name='SocketChannel']"/>
+  <remove-node path="//api/package[@name='java.util']/interface[@name='EventListener']"/>
+  <remove-node path="//api/package[@name='java.util']/interface[@name='PrimitiveIterator']"/>-->
+
+  <attr path="/api/package[@name='java.time.chrono']/class[@name='IsoChronology']/method[@name='dateYearDay' and count(parameter)!=3]" name="managedOverride">override</attr>
+  <attr path="/api/package[@name='java.time.chrono']/class[@name='IsoChronology']/method[@name='dateEpochDay']" name="managedOverride">override</attr>
+  <attr path="/api/package[@name='java.time.chrono']/class[@name='IsoChronology']/method[@name='epochSecond']" name="managedOverride">none</attr>
+  <attr path="/api/package[@name='java.time.chrono']/class[@name='IsoChronology']/method[@name='date' and count(parameter) = 3 and parameter[1][@type='int']]" name="managedOverride">override</attr>
+  <attr path="/api/package[@name='java.time.chrono']/class[@name='IsoChronology']/method[@name='date' and count(parameter) = 1]" name="managedOverride">override</attr>
+  <attr path="/api/package[@name='java.time.chrono']/class[@name='IsoChronology']/method[@name='eraOf']" name="managedOverride">override</attr>
+
+  <attr path="/api/package[@name='java.text']/class[@name='NumberFormat']/method[@name='format' and count(parameter)=3 and parameter[1][@type='java.lang.Object'] and parameter[2][@type='java.lang.StringBuffer'] and parameter[3][@type='java.text.FieldPosition']]" name="managedOverride">virtual</attr>
 
   <!-- Type / Namespace conflicts -->
   <ns-replace source="java.lang.module" replacement="Java.Lang.Modules" />
   <ns-replace source="java.lang.runtime" replacement="Java.Lang.Runtimes" />
   <ns-replace source="java.lang.constant" replacement="Java.Lang.Constants" />
+  <ns-replace source="java.util.random" replacement="Java.Util.Randoms" />
 
   <!-- Bind `Object.finalize()` as `Object.JavaFinalize()` -->
   <attr path="/api/package[@name='java.lang']//method[@name='finalize' and count(parameter)=0]" name="managedName">JavaFinalize</attr>
@@ -73,7 +114,7 @@
   <remove-node path="//api/package[@name='java.lang']/class[@name='StringBuffer']/method[@jni-return='Ljava/lang/Appendable;']" />
 
   <!-- JDK 17? -->
-  <remove-node path="/api/package[@name='java.lang.invoke']/interface[@name='TypeDescriptor']" />
+  <!--<remove-node path="/api/package[@name='java.lang.invoke']/interface[@name='TypeDescriptor']" />-->
   <attr path="/api/package[@name='java.lang']/class[@name='Record']/method[@name='equals' and count(parameter)=1 and parameter[1][@type='java.lang.Object']]"
       name="managedOverride">override</attr>
   <attr path="/api/package[@name='java.lang.reflect']/interface[@name='AnnotatedType']/method[@name='getAnnotation' and count(parameter)=1 and parameter[1][@type='java.lang.Class&lt;T&gt;']]"

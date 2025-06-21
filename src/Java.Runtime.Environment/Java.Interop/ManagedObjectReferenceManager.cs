@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Java.Interop {
 
-	class ManagedObjectReferenceManager : JniRuntime.JniObjectReferenceManager {
+	public class ManagedObjectReferenceManager : JniRuntime.JniObjectReferenceManager {
 
 		TextWriter? grefLog;
 		TextWriter? lrefLog;

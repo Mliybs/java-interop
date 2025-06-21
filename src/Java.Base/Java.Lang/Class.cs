@@ -7,8 +7,13 @@ using Java.Lang.Constants;
 
 namespace Java.Lang {
 	public partial class Class {
+		Object? ITypeDescriptor.IOfField.ArrayType () => ArrayType ();
 
-	}
+        Object ITypeDescriptor.IOfField.ComponentType()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 
 #endif  // JAVA_API_17

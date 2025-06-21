@@ -4,7 +4,9 @@
     <TargetFramework>$(DotNetTargetFramework)</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
-    <NoWarn>$(NoWarn);8764;0109;0114</NoWarn>
+    <NoWarn>$(NoWarn);8764;0109;0114;0108;0809;0618</NoWarn>
+    <DefineConstants>JAVA_API_17</DefineConstants>
+    <_ApiLevel>--api-level 114514</_ApiLevel>
   </PropertyGroup>
 
   <Import Project="..\..\TargetFrameworkDependentValues.props" />
@@ -15,13 +17,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Java.Interop\Java.Interop.csproj" />
-    <ProjectReference Include="..\..\tools\class-parse\class-parse.csproj"  ReferenceOutputAssembly="False" />
-    <ProjectReference Include="..\..\tools\generator\generator.csproj"      ReferenceOutputAssembly="False" />
+    <ProjectReference Include="..\..\tools\class-parse\class-parse.csproj" ReferenceOutputAssembly="False" />
+    <ProjectReference Include="..\..\tools\generator\generator.csproj" ReferenceOutputAssembly="False" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
   </ItemGroup>
+
+  <!--在targets文件内控制编译-->
 
   <Import Project="Java.Base.targets" />
 

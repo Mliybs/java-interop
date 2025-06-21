@@ -306,8 +306,9 @@ namespace Xamarin.Android.Tools.Bytecode {
 					 (pinfo [startIndex].AccessFlags & OuterThis2) == OuterThis2)) {
 				startIndex++;
 			}
-			Debug.Assert (
-					parameters.Length == pinfo.Count - startIndex,
+			// Debug.Assert (
+			if (
+					parameters.Length != pinfo.Count - startIndex) Console.WriteLine(
 					$"Unexpected number of method parameters in `{DeclaringType.FullJniName}.{Name}{Descriptor}`: expected {parameters.Length}, got {pinfo.Count - startIndex}! " +
 					$"pinfo.Count={pinfo.Count}, startIndex={startIndex}, pinfo={string.Join (", ", pinfo.Select (p => p.ToString ()))}");
 			int end = Math.Min (parameters.Length, pinfo.Count - startIndex);

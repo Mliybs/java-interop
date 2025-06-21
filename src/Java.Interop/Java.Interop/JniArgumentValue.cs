@@ -101,6 +101,16 @@ namespace Android.Runtime
 				l = IntPtr.Zero;
 		}
 
+		public JniArgumentValue (string? value)
+		{
+			this = new JniArgumentValue ();
+			if (value != null) {
+				var reference = JniEnvironment.Strings.NewString (value);
+				l = new JavaObject (ref reference, JniObjectReferenceOptions.CopyAndDispose).PeerReference.Handle;
+			} else
+				l = IntPtr.Zero;
+		}
+
 		public override int GetHashCode ()
 		{
 			return j.GetHashCode ();

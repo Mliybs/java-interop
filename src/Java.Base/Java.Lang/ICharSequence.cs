@@ -2,6 +2,10 @@ using System.Collections;
 
 namespace Java.Lang {
 
+	partial interface ICharSequence
+	{
+	}
+
 	partial class ICharSequenceInvoker : IEnumerable {
 	}
 

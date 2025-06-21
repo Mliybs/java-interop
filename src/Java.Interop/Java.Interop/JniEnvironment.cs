@@ -95,7 +95,7 @@ namespace Java.Interop {
 			transition.Dispose ();
 		}
 
-		internal    static  void    SetEnvironmentPointer (IntPtr environmentPointer)
+		public    static  void    SetEnvironmentPointer (IntPtr environmentPointer)
 		{
 			CurrentInfo.EnvironmentPointer  = environmentPointer;
 		}
